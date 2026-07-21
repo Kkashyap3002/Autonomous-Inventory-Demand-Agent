@@ -15,6 +15,10 @@ import sqlite3
 BASE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BASE))
 
+# Auto-bootstrap data on Streamlit Cloud (runs once, idempotent)
+from phase6_ui.bootstrap import ensure_data
+ensure_data()
+
 from phase6_ui.style import COLORS, inject_css
 from phase5_agent.graph import run_agent
 
