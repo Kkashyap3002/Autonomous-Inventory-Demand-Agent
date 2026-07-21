@@ -1,0 +1,86 @@
+================================================================================
+            AIDA SUPPLIER RETURNS & CLAIMS POLICY
+================================================================================
+
+Policy #:    POL-SUP-002
+Version:     3.1
+Effective:   February 1, 2024
+Owner:       AIDA Finance & Supply Chain
+
+1. SCOPE
+   This policy defines the process for AIDA to return goods to suppliers and
+   file claims for: (a) damaged-on-arrival goods, (b) short-shipped quantities,
+   (c) expired or short-dated products, (d) quality failures, and (e) goods
+   recalled under food safety notices.
+
+2. CLAIM CATEGORIES & TIMELINES
+
+   2.1 DAMAGE ON ARRIVAL (DOA)
+       (a) Reporting Window: Within 4 hours of receiving for perishables;
+           24 hours for ambient/FMCG.
+       (b) Evidence Required: Photo of damaged goods showing batch code/label,
+           signed delivery receipt noting damage.
+       (c) Supplier Response: Credit note within 3 business days.
+       (d) Disputed Claims: Escalated to joint QA inspection within 48 hours.
+
+   2.2 SHORT SHIPMENT
+       (a) Reporting Window: Within 2 hours of receiving.
+       (b) Evidence: Receiving team counts goods within 30 minutes of
+           unloading. Shortages must be noted on the delivery challan AND
+           confirmed by the delivery driver's signature.
+       (c) Resolution: Supplier to deliver short quantity same-day (for
+           perishables) or next-day (ambient), OR issue credit note within
+           1 business day if redelivery is not feasible.
+
+   2.3 EXPIRED / SHORT-DATED GOODS
+       (a) Definition: Product delivered with remaining shelf life below the
+           minimum specified in the respective supplier contract.
+       (b) Reporting Window: Before the goods are accepted into inventory
+           (i.e., at the receiving stage).
+       (c) Resolution: Goods rejected immediately. Supplier credited 100%
+           within 2 business days.
+
+   2.4 QUALITY FAILURE (POST-RECEIVING)
+       (a) If a quality issue is discovered after goods have been accepted
+           into inventory (e.g., spoilage within 24 hours, foreign object
+           found by customer), the Store Manager files a Quality Incident
+           Report (QIR) within 1 hour of discovery.
+       (b) Evidence: Photos, batch code, temperature log at time of issue,
+           and retained sample in cold storage.
+       (c) Investigation: Supplier has 48 hours to investigate and respond.
+           If supplier does not respond within 48 hours, the claim is
+           auto-approved and deducted from the next invoice.
+
+   2.5 FOOD SAFETY RECALL
+       (a) If a product is subject to an FSSAI-mandated or supplier-initiated
+           recall, SUPPLIER bears 100% of costs: customer refunds, logistics
+           (reverse pickup), disposal, and any regulatory fines.
+       (b) AIDA will remove the product from the app within 15 minutes of
+           receiving a recall notice.
+
+3. FINANCIAL SETTLEMENT
+   3.1 All approved credits and penalties are settled via deduction from the
+       next payment run to the supplier (not via separate invoice).
+   3.2 AIDA Finance issues a Debit Note for every deduction. The Debit Note
+       references the original PO number, delivery challan number, and QIR
+       reference (if applicable).
+   3.3 Penalties specified in supplier contracts (late delivery penalty, fill
+       rate penalty, etc.) are applied automatically by the AP system based
+       on PO-vs-receipt data — no manual claim required.
+
+4. SUPPLIER DISPUTE RESOLUTION
+   4.1 Supplier may dispute any claim within 7 calendar days of the debit
+       note date.
+   4.2 Disputes are reviewed by a joint committee (AIDA Procurement Head +
+       Supplier Account Manager) every 15 days.
+   4.3 Unresolved disputes older than 30 days are escalated to AIDA COO and
+       supplier's Regional Director.
+
+5. SUPPLIER SCORECARD
+   5.1 Every supplier is scored monthly on:
+       - Quality Score (defect rate): 40% weight
+       - Delivery Score (on-time + fill rate): 40% weight
+       - Claims Cooperation (response time, dispute rate): 20% weight
+   5.2 Suppliers scoring <70/100 for 2 consecutive months are placed on a
+       Performance Improvement Plan (PIP) lasting 60 days.
+   5.3 PIP failure → supplier is de-listed and replaced within 30 days.

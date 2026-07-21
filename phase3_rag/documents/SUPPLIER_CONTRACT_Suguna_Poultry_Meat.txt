@@ -1,0 +1,62 @@
+================================================================================
+         MEAT & POULTRY SUPPLY AGREEMENT — SUGUNA FOODS
+================================================================================
+
+Agreement #:  SUP-SUG-2024-004
+Parties:      AIDA Quick-Commerce Pvt Ltd ("BUYER")
+              Suguna Foods Pvt Ltd ("SUPPLIER")
+Effective:    January 20, 2024
+Term:         12 months, auto-renewing monthly
+
+*** THIS AGREEMENT INCLUDES CRITICAL FOOD SAFETY PROVISIONS ***
+
+1. PRODUCT SPECIFICATIONS
+   1.1 Fresh Chicken:
+       (a) Whole Chicken (1.0–1.5 kg dressed weight) — halal certified
+       (b) Chicken Breast Boneless (450–550g pack)
+       (c) Chicken Curry Cut (900–1100g pack)
+       (d) Chicken Thigh & Drumstick (450–550g pack)
+   1.2 Fresh Fish:
+       (a) Rohu / Katla (500–700g dressed weight)
+       (b) Basa / Tilapia Fillets (450–550g pack)
+   1.3 Eggs: Farm fresh white/brown eggs in trays of 6, 12, and 30.
+
+2. FOOD SAFETY & COLD CHAIN (CRITICAL)
+   2.1 Temperature Range: 0°C to 4°C throughout the supply chain from
+       processing plant to dark store cold room.
+   2.2 Each delivery must carry a time-temperature data logger printout.
+       ANY breach of >4°C for >20 minutes renders the ENTIRE shipment
+       non-compliant and subject to immediate rejection.
+   2.3 FSSAI Compliance: SUPPLIER must maintain valid FSSAI license and
+       provide monthly microbiological test reports (Total Plate Count,
+       E. coli, Salmonella) for each product category.
+   2.4 Traceability: Every pack must carry a batch code traceable to the
+       farm and processing date. In the event of a food safety recall,
+       SUPPLIER shall bear 100% of recall costs including customer refunds,
+       logistics, and disposal.
+
+3. ORDERING & DELIVERY
+   3.1 BUYER places orders by 20:00 IST for next-morning delivery.
+   3.2 Delivery Window: 04:30–06:30 IST, 365 days per year.
+   3.3 SLA Target: 99% line fill rate. Meat and poultry stockouts in
+       quick-commerce directly cause lost customer baskets — the BUYER
+       considers this a "critical-to-business" metric.
+   3.4 Short Delivery Penalty: For every unit short-delivered, a penalty
+       of 2x the BUYER's unit margin applies (i.e., the SUPPLIER compensates
+       for not just the cost but the lost profit).
+
+4. SHELF LIFE & RETURNS
+   4.1 At delivery, products must have minimum 3 days of remaining shelf life
+       for fresh chicken/fish and minimum 10 days for eggs.
+   4.2 Products not sold by expiry date: SUPPLIER shall collect and credit
+       100% for unsold fresh product at store level. BUYER to flag expiring
+       stock 48 hours before expiry.
+   4.3 Weight Variance: Random weight checks on 2% of packs. If >5% of
+       checked packs are underweight by >3%, the ENTIRE delivery batch is
+       rejected at SUPPLIER's cost.
+
+5. PRICING
+   5.1 Prices are reviewed weekly every Sunday due to live-bird price
+       fluctuation. Price changes take effect from Monday deliveries.
+   5.2 Payment: Net-7 days (accelerated due to perishable nature and daily
+       delivery cycle).

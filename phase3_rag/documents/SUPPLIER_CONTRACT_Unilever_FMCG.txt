@@ -1,0 +1,51 @@
+================================================================================
+            FMCG & HOME CARE SUPPLY AGREEMENT — UNILEVER
+================================================================================
+
+Agreement #:  SUP-UNI-2024-003
+Parties:      AIDA Quick-Commerce Pvt Ltd ("BUYER")
+              Hindustan Unilever Ltd ("SUPPLIER")
+Effective:    March 1, 2024
+Term:         24 months
+
+1. PRODUCT CATEGORIES
+   1.1 Home Care: Surf Excel (detergents), Vim (dishwash liquids & bars),
+       Domex (floor & toilet cleaners), Cif (surface cleaners)
+   1.2 Personal Care: Dove, Sunsilk, Clinic Plus (shampoos & conditioners);
+       Pepsodent, Closeup (oral care); Lifebuoy, Lux, Dove (soaps & body wash)
+   1.3 Foods & Refreshment: Knorr (soups, noodles), Kissan (jams, ketchups),
+       Bru (instant coffee)
+
+2. ORDER FULFILLMENT
+   2.1 Order Frequency: BUYER may place orders daily.
+   2.2 Lead Time: Standard SKUs — 2 business days. Promotional packs — 5 business days.
+   2.3 Fill Rate Target: 97% line fill rate measured monthly.
+   2.4 Case Pick Accuracy: 99.5%. Miscased or mispicked items to be credited
+       at 110% of invoice value (10% administrative penalty).
+
+3. PRICING & DISCOUNTS
+   3.1 Trade Margin: BUYER receives a base trade margin of 12% on MRP for
+       all Home Care SKUs and 10% on Personal Care SKUs.
+   3.2 Quarterly Volume Rebate:
+       - INR 15,00,000 – 25,00,000 quarterly: additional 1.5% rebate
+       - INR 25,00,001 – 40,00,000 quarterly: additional 2.5% rebate
+       - Above INR 40,00,000 quarterly: additional 4% rebate
+   3.3 Payment Terms: Net-30 days with 2% early payment discount if paid
+       within 15 days.
+
+4. RETURNS POLICY
+   4.1 Damaged on Arrival (DOA): Report within 48 hours. Full credit + INR 100
+       per case handling charge.
+   4.2 Slow-Moving Stock: BUYER may return up to 5% of quarterly volume of
+       any SKU that has sold less than 30% of average category velocity for
+       30 consecutive days. SUPPLIER issues credit at 85% of invoice value.
+   4.3 Packaging Changes: When SUPPLIER changes packaging, all old-pack stock
+       to be collected at SUPPLIER's cost within 7 days of new pack launch.
+
+5. SERVICE LEVEL PENALTIES
+   5.1 Fill Rate Penalty: For every 1% below 97% fill rate, a penalty of
+       0.5% of the shortfall invoice value applies.
+   5.2 Late Delivery: INR 2,500 per late purchase order per day beyond the
+       committed lead time.
+   5.3 Order Cancellation by SUPPLIER: If SUPPLIER cancels a confirmed PO,
+       penalty of 3% of the cancelled PO value.

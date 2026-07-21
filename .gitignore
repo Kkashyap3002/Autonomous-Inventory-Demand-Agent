@@ -1,0 +1,39 @@
+# Bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Databases (rebuilt from CSVs via scripts)
+*.db
+*.sqlite
+
+# ChromaDB vector store (rebuilt via embed_docs.py)
+phase3_rag/chroma_db/
+
+# Generated synthetic data (rebuilt via generate_data.py)
+phase1_schema/synthetic_data/
+
+# Forecast CSV (rebuilt via train_forecast.py)
+phase4_forecasting/forecast_results.csv
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment
+.env
+.env.local

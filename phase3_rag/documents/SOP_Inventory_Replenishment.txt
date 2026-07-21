@@ -1,0 +1,83 @@
+================================================================================
+    STANDARD OPERATING PROCEDURE: INVENTORY REPLENISHMENT
+================================================================================
+
+SOP #:       SOP-INV-001
+Version:     3.2
+Effective:   January 15, 2024
+Owner:       Head of Supply Chain, AIDA Quick-Commerce
+Approved By: Chief Operating Officer
+
+1. PURPOSE
+   To define the standard process for inventory replenishment across all
+   AIDA dark stores, ensuring optimal stock levels that balance product
+   availability against working capital and wastage costs.
+
+2. SCOPE
+   This SOP applies to all Store Managers, Inventory Analysts, and the
+   Central Replenishment Team (CRT).
+
+3. DEFINITIONS
+   - PAR Level:  Periodic Automatic Replenishment level — the target
+     quantity to maintain for each SKU at each store.
+   - ROP (Reorder Point): The inventory level at which a new purchase order
+     must be triggered. ROP = (Average Daily Sales × Supplier Lead Time) + Safety Stock.
+   - Safety Stock: Buffer inventory to absorb demand variability and
+     supply uncertainty. Calculated as 1.65 × Standard Deviation of Daily Sales
+     × sqrt(Lead Time) for a 95% service level.
+   - EOQ (Economic Order Quantity): Optimal order quantity that minimizes
+     total holding + ordering cost.
+
+4. REPLENISHMENT WORKFLOW
+
+   4.1 AUTOMATED MONITORING
+       (a) The inventory management system checks stock levels against ROP
+           every 30 minutes for all SKUs across all stores.
+       (b) A replenishment alert is generated when:
+           - Available Qty <= Reorder Point, OR
+           - Days of Stock (available qty / 7-day avg daily sales) < 2 days
+       (c) Alerts are prioritized as:
+           - PRIORITY 1 (P1): Stockout imminent — days of stock < 1 day.
+             Action required within 30 minutes.
+           - PRIORITY 2 (P2): Stockout within 48 hours — days of stock 1-2 days.
+             Action required within 2 hours.
+           - PRIORITY 3 (P3): Below target — available qty <= ROP but > 2 days.
+             Action required before end of shift.
+
+   4.2 PURCHASE ORDER CREATION
+       (a) For P1 alerts: Store Manager auto-generates a PO using the
+           system-recommended order quantity. No approval needed — system
+           auto-sends to supplier.
+       (b) For P2 alerts: Inventory Analyst reviews and adjusts the
+           recommended quantity before approving.
+       (c) For P3 alerts: CRT reviews during the scheduled replenishment
+           window (09:00–11:00 IST and 16:00–18:00 IST).
+
+   4.3 ORDER QUANTITY LOGIC
+       (a) Default: Order up to PAR level.
+       (b) Perishables with shelf life < 5 days: Order max(ROP trigger qty,
+           1.5 × forecasted daily demand). Never order more than 3 days of
+           forecasted demand for ultra-perishables (shelf life <= 3 days).
+       (c) Promotion periods: Apply a promo lift factor of 1.8–2.5× (based on
+           historical lift for the category) to the order quantity starting
+           3 days before the promotion start date.
+
+   4.4 EXCEPTIONS & OVERRIDES
+       (a) Manual overrides above the system recommendation require Store
+           Manager + Regional Manager approval for amounts >INR 50,000.
+       (b) Supplier MOQ constraint: If MOQ exceeds the system-recommended
+           order quantity, the Inventory Analyst must either:
+           (i)  Bypass MOQ (if supplier allows), or
+           (ii) Accept the overstock and flag for inter-store transfer review.
+
+5. PERFORMANCE METRICS
+   5.1 Fill Rate: % of customer orders fulfilled completely. Target: 98%.
+   5.2 Inventory Turnover: COGS / Average Inventory Value. Target: 18–22× per year.
+   5.3 Wastage %: Value of written-off stock / Total COGS. Target: <1.5%.
+   5.4 Stockout Rate: % of SKU-hours at zero available inventory. Target: <0.5%.
+
+6. REVIEW CADENCE
+   - Daily: P1/P2 alert review at 09:00 stand-up.
+   - Weekly: Inventory health dashboard review every Monday 14:00 IST.
+   - Monthly: Full SOP review and parameter tuning (ROP, safety stock, PAR
+     levels) using the previous 90 days of sales data.

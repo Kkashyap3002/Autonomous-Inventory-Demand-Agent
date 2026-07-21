@@ -1,0 +1,56 @@
+================================================================================
+           BEVERAGE SUPPLY & DISTRIBUTION AGREEMENT — PEPSICO
+================================================================================
+
+Agreement #:  SUP-PEP-2024-002
+Parties:      AIDA Quick-Commerce Pvt Ltd ("BUYER")
+              PepsiCo India Holdings Pvt Ltd ("SUPPLIER")
+Effective:    February 15, 2024
+Term:         24 months with 2 optional 12-month renewals
+
+1. PRODUCT RANGE
+   - Carbonated Soft Drinks: Pepsi, Mirinda, 7Up, Mountain Dew (250ml cans,
+     500ml bottles, 750ml bottles, 1.5L and 2L PET bottles)
+   - Hydration: Aquafina packaged drinking water (500ml, 1L, 2L)
+   - Energy: Sting energy drink (250ml)
+   All SKU codes and barcodes are listed in Annexure A.
+
+2. ORDERING & DELIVERY
+   2.1 Minimum Order Quantity (MOQ): 50 cases per SKU per store per order.
+   2.2 Order Cut-off: Orders placed before 16:00 IST will be delivered by
+       10:00 IST the next business day. Orders after cut-off shift by one day.
+   2.3 Delivery SLA: 95% case fill rate measured monthly. Below 95% triggers
+       an automatic 2% invoice deduction for that month.
+   2.4 Direct Store Delivery (DSD): SUPPLIER's merchandisers shall visit each
+       dark store at least twice per week to rotate stock, check expiry dates,
+       and restock shelves.
+
+3. PROMOTIONS & MARKETING
+   3.1 Joint Business Plan: BUYER and SUPPLIER shall agree on quarterly
+       promotion calendars at least 30 days before the quarter starts.
+   3.2 Promo Funding: SUPPLIER shall provide marketing funds equal to 4% of
+       quarterly net invoicing for in-app banners, push notifications, and
+       homepage features.
+   3.3 Exclusive Windows: SUPPLIER gets a 7-day exclusive promotion window
+       during key calendar events (New Year, Holi, Diwali, Cricket Finals)
+       with no competing brands in the same subcategory.
+
+4. PRICING
+   4.1 Base prices are valid for 6 months from the agreement date.
+   4.2 Commodity Surcharge: If sugar prices (as published by NCDEX) increase
+       by more than 15% from the base index, SUPPLIER may add a surcharge of
+       INR 1.50 per unit. The surcharge is removed when prices normalize.
+   4.3 Payment: Net-45 days.
+
+5. RETURNS & DAMAGED GOODS
+   5.1 Transit Damage: Damaged cases must be reported within 24 hours with
+       photographic evidence. 100% credit issued.
+   5.2 Expired Stock: SUPPLIER shall collect and credit all expired stock
+       within its shelf life + 7 days, capped at 3% of monthly volume.
+   5.3 Customer Returns: BUYER may deduct customer refund amounts for quality
+       complaints directly from the next invoice, up to 1% of invoice value.
+
+6. TERMINATION
+   6.1 Either party: 60 days written notice.
+   6.2 BUYER may terminate immediately if SUPPLIER fails the 95% fill rate
+       for 3 consecutive months.

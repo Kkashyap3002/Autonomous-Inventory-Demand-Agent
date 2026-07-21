@@ -1,0 +1,75 @@
+================================================================================
+       STANDARD OPERATING PROCEDURE: COLD CHAIN MANAGEMENT
+================================================================================
+
+SOP #:       SOP-CCM-002
+Version:     2.1
+Effective:   February 1, 2024
+Owner:       Head of Quality Assurance
+
+1. PURPOSE
+   To define the temperature control requirements and monitoring procedures
+   for all cold-chain products from supplier receipt through last-mile delivery.
+
+2. TEMPERATURE ZONES & PRODUCT MAPPING
+   +----------------------+------------------+-------------------------------+
+   | ZONE                 | TEMP RANGE       | PRODUCT CATEGORIES            |
+   +----------------------+------------------+-------------------------------+
+   | Frozen               | -18°C to -22°C   | Ice cream, frozen vegetables, |
+   |                      |                  | frozen paratha/naan, nuggets  |
+   | Chilled - Dairy      | 0°C to 4°C       | Milk, paneer, cream, yogurt,  |
+   |                      |                  | cheese, butter, buttermilk    |
+   | Chilled - Meat/Fish  | 0°C to 2°C       | Chicken, fish fillets, eggs   |
+   | Cool - Produce       | 4°C to 10°C      | Leafy veg, soft fruits        |
+   | Ambient              | 18°C to 28°C     | FMCG, beverages, snacks       |
+   +----------------------+------------------+-------------------------------+
+
+3. MONITORING PROCEDURE
+   3.1 COLD ROOM MONITORING
+       (a) Every cold room is equipped with 4 IoT temperature sensors
+           (one per corner) logging every 5 minutes.
+       (b) If any sensor reads outside the zone range for >10 continuous
+           minutes, an SMS alert is sent to the Store Manager and QA Head.
+       (c) If the condition persists for >30 minutes, the product in that zone
+           must be quarantined and a QA inspection is mandatory before it can
+           be sold.
+
+   3.2 DELIVERY VEHICLE MONITORING
+       (a) Supplier vehicles must have calibrated temperature loggers.
+           Data is downloaded at every store receiving bay.
+       (b) Acceptance Criteria at Receiving:
+           - Chilled products: internal product temperature <= 4°C
+           - Frozen products: internal product temperature <= -15°C
+       (c) Rejection Protocol: Product temperature out of range → immediately
+           rejected. QA fills Form CCM-R01 (Rejection Record). Photo evidence
+           of temperature display + product is mandatory.
+
+   3.3 LAST-MILE DELIVERY
+       (a) Delivery riders carry chilled/frozen items in insulated thermal
+           bags with phase-change gel packs.
+       (b) Bags must maintain <8°C for chilled and < -10°C for frozen for at
+           least 45 minutes (maximum delivery radius time).
+       (c) Gel packs are re-frozen overnight. QA audits gel pack rotation
+           weekly — any pack showing visible damage or >6 months old is
+           discarded and replaced.
+
+4. POWER FAILURE & EMERGENCY PROTOCOL
+   4.1 All cold rooms have 100% DG (diesel generator) backup with automatic
+       transfer switch. UPS bridge covers the 15-second generator start gap.
+   4.2 If power is not restored within 2 minutes of outage, Store Manager
+       escalates to Facilities Head.
+   4.3 If cold room temperature rises >2°C above the zone maximum and is not
+       recovering within 45 minutes, all perishable stock in that zone must
+       be moved to a backup cold room or a reefer truck.
+
+5. AUDIT & COMPLIANCE
+   5.1 Internal Audit: QA team conducts unannounced cold chain audits at each
+       store once every 14 days. Audit covers: sensor calibration, logger
+       data review, gel pack condition, and receiving log completeness.
+   5.2 Non-Compliance Scoring:
+       - Minor (e.g., 1 sensor out of calibration by <1°C): Verbal warning,
+         re-calibrate within 24 hours.
+       - Major (e.g., product temp >2°C out of range at receiving, not
+         rejected): Written warning + mandatory re-training within 7 days.
+       - Critical (e.g., cold room failure >1 hour with no action taken):
+         Store Manager suspension pending investigation.

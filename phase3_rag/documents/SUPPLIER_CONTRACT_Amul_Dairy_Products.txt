@@ -1,0 +1,75 @@
+================================================================================
+        MASTER SUPPLY AGREEMENT — DAIRY & PERISHABLE DAIRY PRODUCTS
+================================================================================
+
+Agreement #:  SUP-AMD-2024-001
+Parties:      AIDA Quick-Commerce Pvt Ltd ("BUYER")
+              Amul Dairy Cooperative ("SUPPLIER")
+Effective:    January 1, 2024
+Term:         36 months, auto-renewing for 12-month periods unless terminated
+
+1. PRODUCT SCOPE
+   The SUPPLIER shall provide the following categories on a daily basis:
+   (a) Fresh Milk (Full Cream, Toned, Double Toned) — 500ml and 1L packs
+   (b) Paneer — 200g and 500g blocks
+   (c) Fresh Cream — 250ml and 500ml tubs
+   (d) Yogurt (Plain, Flavoured) — 200g and 400g cups
+   (e) Cheese (Slices, Blocks, Spread) — 100g to 500g
+   (f) Butter (Salted, Unsalted) — 100g and 500g packs
+   (g) Buttermilk — 200ml and 1L packs
+
+2. DELIVERY & LOGISTICS
+   2.1 Delivery Frequency: Daily, 7 days per week (including public holidays).
+   2.2 Delivery Windows: Two mandatory slots — 05:00–06:30 IST and 14:00–15:30 IST.
+   2.3 SLA Requirement: 98% of all line items must be delivered within the
+       scheduled window. Failure to meet SLA for 3 consecutive days triggers
+       an automatic penalty review.
+   2.4 Cold Chain: All products must be maintained at 0–4°C during transit.
+       Temperature loggers must accompany every shipment. Any shipment with
+       recorded temperature >6°C for more than 30 minutes shall be rejected
+       in full at the SUPPLIER's cost.
+
+3. QUALITY & SHELF LIFE
+   3.1 Minimum Remaining Shelf Life at Delivery:
+       - Milk & Buttermilk: 80% of total shelf life
+       - Paneer & Cream:   70% of total shelf life
+       - Yogurt:           75% of total shelf life
+       - Cheese & Butter:  60% of total shelf life
+   3.2 The BUYER reserves the right to conduct random quality tests on 5%
+       of each shipment. Failed tests trigger a batch rejection.
+
+4. PRICING & PAYMENT
+   4.1 Prices are fixed quarterly. Price revision requests must be submitted
+       45 days before the quarter end with supporting cost data.
+   4.2 Payment Terms: Net-30 days from the date of invoice and receipt of goods.
+   4.3 Volume Rebate: If quarterly offtake exceeds INR 25,00,000, a 3% rebate
+       applies to the entire quarter's invoicing.
+   4.4 Early Payment Discount: 2% discount if payment is made within 10 days.
+
+5. RETURNS & CREDITS
+   5.1 Spoilage Claims: Any product found spoiled or past its shelf life at
+       the time of delivery must be reported within 4 hours of receipt.
+       Credit notes will be issued within 3 business days.
+   5.2 Customer Returns Due to Quality: If customer returns exceed 2% of
+       total units sold in a month for quality reasons, the SUPPLIER shall
+       investigate root cause and submit a corrective action report within
+       7 calendar days.
+
+6. PENALTIES & TERMINATION
+   6.1 Late Delivery Penalty: 1.5% of the PO value for each hour of delay
+       beyond the delivery window, capped at 15% of the PO value.
+   6.2 Short Delivery: If fill rate drops below 90% for any 7-day rolling
+       period, a penalty of 5% of the shortfall value applies.
+   6.3 Termination: Either party may terminate with 90 days written notice.
+       BUYER may terminate immediately if SUPPLIER fails the 98% SLA for
+       10 or more days in any 30-day period.
+
+7. FORCE MAJEURE
+   7.1 Neither party shall be liable for failures caused by events beyond
+       reasonable control including natural disasters, government orders,
+       epidemics, or civil unrest. The affected party must notify the other
+       within 24 hours and provide a recovery plan within 3 business days.
+
+Signed:
+For AIDA Quick-Commerce: _________________  Date: _______________
+For Amul Dairy Coop:     _________________  Date: _______________

@@ -1,0 +1,59 @@
+================================================================================
+       FRESH FRUITS & VEGETABLES SUPPLY AGREEMENT — LOCALPRO MANDI
+================================================================================
+
+Agreement #:  SUP-LPM-2024-005
+Parties:      AIDA Quick-Commerce Pvt Ltd ("BUYER")
+              LocalPro Mandi Aggregators Pvt Ltd ("SUPPLIER")
+Effective:    April 1, 2024
+Term:         12 months
+
+1. PRODUCT RANGE (seasonal availability per Annexure A)
+   1.1 Vegetables: Onion, Potato, Tomato, Lady Finger (Okra), Brinjal,
+       Cauliflower, Cabbage, Spinach, Coriander, Green Chilli, Ginger, Garlic
+   1.2 Fruits: Banana (6pc comb), Apple (4pc pack, imported and domestic),
+       Grapes (500g punnet), Pomegranate (2pc pack), Papaya, Watermelon
+   1.3 Pre-Cut / Value-Added: Peeled Garlic (200g), Cut Vegetables Combo
+       (Soup mix, Salad mix — 400g packs).
+
+2. QUALITY GRADING & REJECTION STANDARDS
+   2.1 All produce is graded at source into Grade A (premium, >90% visual
+       appeal), Grade B (standard, >70% visual appeal), and Grade C (cooking
+       grade, >50% visual appeal, sold at discount).
+   2.2 BUYER sells only Grade A and Grade B on the platform.
+   2.3 REJECTION CRITERIA — Delivery is rejected if:
+       (a) >10% of items show visible bruising, pest damage, or decay.
+       (b) >15% weight variance on pre-packaged items.
+       (c) Product temperature at delivery exceeds 10°C for leafy vegetables
+           or 15°C for hard vegetables/fruits.
+   2.4 Rejection Process: BUYER's store manager shall inspect and photograph
+       rejected items within 30 minutes of delivery. SUPPLIER has 2 hours to
+       deliver replacement stock or accept the rejection.
+
+3. DELIVERY & ORDERING
+   3.1 Orders placed by 22:00 IST for delivery by 05:30 IST next morning.
+       Morning orders (placed 06:00–10:00 IST) delivered same day by 17:00 IST.
+   3.2 Delivery SLA: Mandi-sourced produce — daily delivery 7 days/week.
+   3.3 MOQ: INR 3,000 per store per delivery slot.
+
+4. PRICING & PAYMENT
+   4.1 Daily Price List: SUPPLIER publishes a price list by 18:00 IST each
+       evening for next-day deliveries. Prices reflect that day's mandi rates
+       plus a fixed 8% handling margin.
+   4.2 Price Floors & Ceilings: For the top 10 items by volume, prices may
+       not vary more than 25% day-over-day unless driven by mandi auction data.
+   4.3 Payment: Net-15 days. No early payment discount due to thin margins.
+
+5. WASTAGE SHARING
+   5.1 BUYER and SUPPLIER share wastage costs 50:50 for produce that spoils
+       within 24 hours of delivery IF the spoilage exceeds 8% of delivered
+       quantity by value.
+   5.2 BUYER shall provide daily wastage reports itemizing SKU, quantity, and
+       spoilage reason (over-ripe, physical damage, pest, temperature abuse,
+       or unknown). Reports must be submitted by 10:00 IST for previous day.
+
+6. SUSTAINABILITY
+   6.1 SUPPLIER shall minimize single-use plastic. By month 6, at least 40%
+       of packaging by weight must be compostable or returnable.
+   6.2 Unsold edible produce shall be donated to BUYER's food bank partner
+       (Robin Hood Army) within 12 hours of expiry tagging.
