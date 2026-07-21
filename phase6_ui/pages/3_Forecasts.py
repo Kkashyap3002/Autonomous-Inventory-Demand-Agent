@@ -15,6 +15,7 @@ sys.path.insert(0, str(BASE))
 
 from phase6_ui.style import COLORS, inject_css
 from phase6_ui.components.charts import chart_forecast_sparkline
+from phase6_ui.components.db import safe_dataframe
 
 DB = BASE / "phase2_sql" / "aida.db"
 
@@ -30,9 +31,8 @@ f1, f2, f3, f4 = st.columns(4)
 with f1:
     store = st.selectbox("Store", ["All", "DS-BEN-01", "DS-MUM-02", "DS-DEL-03"], key="fcst_store")
 with f2:
-    conn = sqlite3.connect(str(DB))
-    cats = pd.read_sql_query("SELECT DISTINCT category FROM products ORDER BY category", conn)["category"].tolist()
-    conn.close()
+    cats_df = safe_dataframe("SELECT DISTINCT category FROM products ORDER BY category")
+    cats = cats_df["category"].tolist() if not cats_df.empty else []
     cat = st.selectbox("Category", ["All"] + cats, key="fcst_cat")
 with f3:
     horizon = st.selectbox("Horizon", [7, 14, 30], index=0, key="fcst_horizon")
@@ -58,8 +58,7 @@ if risk_only:
                  AND fr2.forecast_date <= :max_date)
     )""")
 
-conn = sqlite3.connect(str(DB))
-df = pd.read_sql_query(f"""
+forecast_sql = f"""
     SELECT fr.sku, fr.product_name, fr.category, fr.store_code,
            fr.forecast_date, fr.forecasted_units,
            ist.qty_available AS current_stock,
@@ -77,14 +76,18 @@ df = pd.read_sql_query(f"""
     WHERE {' AND '.join(where)}
       AND fr.forecast_date <= :max_date
     ORDER BY fr.forecast_date, fr.forecasted_units DESC
-""", conn, params=params)
-conn.close()
+"""
+df = safe_dataframe(forecast_sql, params)
 
 # ── KPI Row ─────────────────────────────────────────────────────────────────
+if df.empty:
+    st.info("No forecast data available. Click 'Generate Data' in the sidebar first.")
+    st.stop()
+
 agg = df.groupby("forecast_date")["forecasted_units"].sum()
 total_demand = agg.sum()
 peak_day = agg.max()
-peak_date = agg.idxmax() if not agg.empty else "—"
+peak_date = agg.idxmax() if not agg.empty else "-"
 
 items = df[["sku", "store_code"]].drop_duplicates()
 at_risk = sum(1 for _, row in df.groupby(["sku", "store_code"]).agg(

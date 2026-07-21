@@ -15,6 +15,7 @@ sys.path.insert(0, str(BASE))
 
 from phase6_ui.style import COLORS, inject_css
 from phase6_ui.components.charts import chart_inventory_health
+from phase6_ui.components.db import safe_dataframe, safe_scalar, db_ready
 
 DB = BASE / "phase2_sql" / "aida.db"
 
@@ -31,9 +32,8 @@ with f_col1:
     store_filter = st.selectbox("Store", ["All"] + ["DS-BEN-01", "DS-MUM-02", "DS-DEL-03"],
                                 key="inv_store")
 with f_col2:
-    conn = sqlite3.connect(str(DB))
-    cats = pd.read_sql_query("SELECT DISTINCT category FROM products ORDER BY category", conn)["category"].tolist()
-    conn.close()
+    cats_df = safe_dataframe("SELECT DISTINCT category FROM products ORDER BY category")
+    cats = cats_df["category"].tolist() if not cats_df.empty else []
     cat_filter = st.selectbox("Category", ["All"] + cats, key="inv_cat")
 with f_col3:
     status_filter = st.selectbox("Stock Status", ["All", "HEALTHY", "OK", "LOW", "STOCKOUT"],
@@ -57,8 +57,7 @@ if search:
     where.append("(LOWER(ist.sku) LIKE :s OR LOWER(ist.product_name) LIKE :s)")
     params["s"] = f"%{search.lower()}%"
 
-conn = sqlite3.connect(str(DB))
-df = pd.read_sql_query(f"""
+inventory_sql = f"""
     SELECT
         ist.store_code, ist.sku, ist.product_name, ist.category,
         ist.qty_available, ist.qty_on_hand, ist.qty_reserved,
@@ -81,8 +80,8 @@ df = pd.read_sql_query(f"""
     ORDER BY CASE ist.stock_status
         WHEN 'STOCKOUT' THEN 0 WHEN 'LOW' THEN 1 WHEN 'OK' THEN 2 ELSE 3 END,
         ist.qty_available ASC
-""", conn, params=params)
-conn.close()
+"""
+df = safe_dataframe(inventory_sql, params)
 
 # ── Stats Row ───────────────────────────────────────────────────────────────
 s1, s2, s3, s4, s5 = st.columns(5)
@@ -131,8 +130,7 @@ else:
 st.markdown("---")
 st.markdown('<p class="aida-section-title">Supplier Performance</p>', unsafe_allow_html=True)
 
-conn = sqlite3.connect(str(DB))
-supp_df = pd.read_sql_query("""
+supp_df = safe_dataframe("""
     SELECT
         sup.supplier_name,
         sup.sla_delivery_hours,
@@ -148,8 +146,7 @@ supp_df = pd.read_sql_query("""
     WHERE po.po_status = 'received'
     GROUP BY sup.supplier_id
     ORDER BY fill_rate ASC
-""", conn)
-conn.close()
+""")
 
 supp_df["fill_rate_pct"] = (supp_df["fill_rate"] * 100).round(1)
 

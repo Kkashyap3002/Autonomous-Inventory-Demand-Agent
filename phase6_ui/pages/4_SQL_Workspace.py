@@ -16,6 +16,7 @@ BASE = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(BASE))
 
 from phase6_ui.style import COLORS, inject_css
+from phase6_ui.components.db import safe_dataframe, safe_query
 
 DB = BASE / "phase2_sql" / "aida.db"
 
@@ -47,32 +48,30 @@ with sidebar:
     st.markdown('<p style="font-weight:700;color:#eef0f6;margin-bottom:8px;">📋 Database Explorer</p>',
                 unsafe_allow_html=True)
 
-    # Get tables and their row counts
-    conn = sqlite3.connect(str(DB))
-    tables = pd.read_sql_query(
-        "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name", conn
-    )["name"].tolist()
+    # Get tables and their row counts (safe)
+    tables_df = safe_dataframe("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name")
+    tables = tables_df["name"].tolist() if not tables_df.empty else []
 
     # Row counts
     table_info = {}
-    for t in tables:
-        try:
-            cur = conn.execute(f'SELECT COUNT(*) FROM "{t}"')
-            table_info[t] = cur.fetchone()[0]
-        except:
-            table_info[t] = "—"
+    if tables_df is not None and not tables_df.empty:
+        for t in tables:
+            try:
+                r = safe_query(f'SELECT COUNT(*) AS cnt FROM "{t}"')
+                table_info[t] = r[0]["cnt"] if r else "-"
+            except:
+                table_info[t] = "-"
 
     # Also get views
-    views = pd.read_sql_query(
-        "SELECT name FROM sqlite_master WHERE type='view' ORDER BY name", conn
-    )["name"].tolist()
-    for v in views:
-        try:
-            cur = conn.execute(f'SELECT COUNT(*) FROM "{v}"')
-            table_info[v] = cur.fetchone()[0]
-        except:
-            table_info[v] = "—"
-    conn.close()
+    views_df = safe_dataframe("SELECT name FROM sqlite_master WHERE type='view' ORDER BY name")
+    views = views_df["name"].tolist() if not views_df.empty else []
+    if views_df is not None and not views_df.empty:
+        for v in views:
+            try:
+                r = safe_query(f'SELECT COUNT(*) AS cnt FROM "{v}"')
+                table_info[v] = r[0]["cnt"] if r else "-"
+            except:
+                table_info[v] = "-"
 
     all_objects = tables + views
 
@@ -105,29 +104,32 @@ with sidebar:
 
         # Expand to show schema + preview
         if st.session_state.get(f"show_{obj_name}", False):
-            conn = sqlite3.connect(str(DB))
-
-            # Schema
-            schema_df = pd.read_sql_query(f'PRAGMA table_info("{obj_name}")', conn)
-            st.caption(f"**Schema** ({len(schema_df)} columns)")
-            st.dataframe(
-                schema_df[["name", "type"]].rename(columns={"name": "Column", "type": "Type"}),
-                use_container_width=True, hide_index=True, height=min(200, 35 * len(schema_df) + 38),
-            )
-
-            # Quick insert
-            if st.button(f"📝 SELECT * FROM {obj_name}", key=f"sel_{obj_name}", use_container_width=True):
-                st.session_state.sql_editor_text = f"SELECT * FROM {obj_name} LIMIT 50;"
-
-            # Preview first 5 rows
             try:
-                preview = pd.read_sql_query(f'SELECT * FROM "{obj_name}" LIMIT 5', conn)
-                st.caption(f"**Preview** (first 5 of {count} rows)")
-                st.dataframe(preview, use_container_width=True, hide_index=True)
-            except Exception as e:
-                st.caption(f"Could not preview: {e}")
+                conn = sqlite3.connect(str(DB))
 
-            conn.close()
+                # Schema
+                schema_df = pd.read_sql_query(f'PRAGMA table_info("{obj_name}")', conn)
+                st.caption(f"**Schema** ({len(schema_df)} columns)")
+                st.dataframe(
+                    schema_df[["name", "type"]].rename(columns={"name": "Column", "type": "Type"}),
+                    use_container_width=True, hide_index=True, height=min(200, 35 * len(schema_df) + 38),
+                )
+
+                # Quick insert
+                if st.button(f"SELECT * FROM {obj_name}", key=f"sel_{obj_name}", use_container_width=True):
+                    st.session_state.sql_editor_text = f"SELECT * FROM {obj_name} LIMIT 50;"
+
+                # Preview first 5 rows
+                try:
+                    preview = pd.read_sql_query(f'SELECT * FROM "{obj_name}" LIMIT 5', conn)
+                    st.caption(f"**Preview** (first 5 of {count} rows)")
+                    st.dataframe(preview, use_container_width=True, hide_index=True)
+                except Exception as e:
+                    st.caption(f"Could not preview: {e}")
+
+                conn.close()
+            except Exception as e:
+                st.caption(f"Database not available: {e}")
             st.markdown("---")
 
     st.caption(f"{len(tables)} tables · {len(views)} views · {sum(isinstance(v, int) for v in table_info.values()):,} total rows")

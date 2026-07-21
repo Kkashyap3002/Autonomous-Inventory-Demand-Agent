@@ -21,6 +21,7 @@ sys.path.insert(0, str(BASE))
 
 from phase6_ui.style import COLORS, inject_css
 from phase6_ui.components.charts import LAYOUT_DARK
+from phase6_ui.components.db import safe_dataframe
 
 DB = BASE / "phase2_sql" / "aida.db"
 
@@ -111,13 +112,7 @@ with st.sidebar:
     @st.cache_data(ttl=30)
     def load_dataset(source_key: str, days: int) -> pd.DataFrame:
         sql = PREBUILT_QUERIES[source_key].format(days=days)
-        conn = sqlite3.connect(str(DB))
-        df = pd.read_sql_query(sql, conn, parse_dates=[
-            c for c in ["sale_date", "ordered_at", "delivered_at"]
-            if c in sql
-        ])
-        conn.close()
-        return df
+        return safe_dataframe(sql)
 
     df = load_dataset(selected_source, days_back)
 
