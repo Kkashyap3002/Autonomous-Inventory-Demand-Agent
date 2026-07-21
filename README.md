@@ -20,7 +20,7 @@ User Query → LangGraph Agent → Classifier → ┌─ SQL Tool (NL → SQL �
 | 3 | `phase3_rag/` | 10 business documents → 137 chunks → ChromaDB vector store |
 | 4 | `phase4_forecasting/` | ETS/XGBoost demand forecasting (132 product-stores, 30-day horizon) |
 | 5 | `phase5_agent/` | LangGraph StateGraph with intent classifier + 3-tool routing |
-| 6 | `phase6_ui/` | Streamlit dashboard with live KPIs and chat interface |
+| 6 | `phase6_ui/` | Multi-page Streamlit dashboard (Chat + KPIs + Inventory + Forecasts) |
 
 ## Quick Start
 
