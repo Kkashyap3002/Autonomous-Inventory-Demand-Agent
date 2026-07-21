@@ -345,7 +345,6 @@ def render_chart(data: pd.DataFrame, chart_type: str, x: str, y: str,
         **LAYOUT_DARK,
         title=title,
         height=height,
-        hovermode="x unified",
     )
     return fig
 
