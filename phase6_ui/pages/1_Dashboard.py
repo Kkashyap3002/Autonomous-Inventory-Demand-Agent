@@ -17,6 +17,7 @@ from phase6_ui.components.charts import (
     chart_revenue_trend, chart_category_breakdown,
     chart_inventory_health, chart_top_products,
 )
+from phase6_ui.components.db import safe_scalar
 
 DB = BASE / "phase2_sql" / "aida.db"
 
@@ -28,55 +29,16 @@ st.markdown('<p class="aida-logo">AIDA</p>', unsafe_allow_html=True)
 st.markdown('<p class="aida-page-subtitle">Executive Overview · Real-time inventory intelligence</p>',
             unsafe_allow_html=True)
 
-# ── KPI Row ─────────────────────────────────────────────────────────────────
-conn = sqlite3.connect(str(DB))
-cur = conn.execute("""
-    SELECT COUNT(*), ROUND(SUM(order_total), 0)
-    FROM orders WHERE order_status = 'delivered'
-      AND ordered_at >= DATE('now', '-30 days')
-""")
-orders_30d, rev_30d = cur.fetchone()
-
-cur = conn.execute("""
-    SELECT ROUND(AVG(order_total), 0) FROM orders
-    WHERE order_status = 'delivered' AND ordered_at >= DATE('now', '-30 days')
-""")
-aov = cur.fetchone()[0] or 0
-
-cur = conn.execute("""
-    SELECT COUNT(*) FROM inventory_status WHERE stock_status IN ('STOCKOUT', 'LOW')
-""")
-low_stock = cur.fetchone()[0]
-
-cur = conn.execute("""
-    SELECT ROUND(SUM(forecasted_units), 0) FROM forecast_results
-    WHERE forecast_date BETWEEN DATE('now') AND DATE('now', '+7 days')
-""")
-fcst_7d = cur.fetchone()[0] or 0
-
-cur = conn.execute("""
-    SELECT COUNT(*) FROM inventory_status WHERE stock_status = 'STOCKOUT'
-""")
-stockouts = cur.fetchone()[0]
-
-cur = conn.execute("""
-    SELECT COUNT(*) FROM products
-""")
-products = cur.fetchone()[0]
-
-cur = conn.execute("""
-    SELECT ROUND(SUM(oi.line_total - p.unit_cost * oi.quantity) / SUM(oi.line_total) * 100, 1)
-    FROM order_items oi JOIN products p ON oi.product_id = p.product_id
-    JOIN orders o ON oi.order_id = o.order_id WHERE o.order_status = 'delivered'
-""")
-margin_pct = cur.fetchone()[0] or 0
-
-cur = conn.execute("""
-    SELECT ROUND(SUM(forecasted_units), 0) FROM forecast_results
-    WHERE forecast_date BETWEEN DATE('now') AND DATE('now', '+30 days')
-""")
-fcst_30d = cur.fetchone()[0] or 0
-conn.close()
+# ── KPI Row (safe queries — return 0 if DB not ready) ───────────────────────
+orders_30d = safe_scalar("SELECT COUNT(*) FROM orders WHERE order_status = 'delivered' AND ordered_at >= DATE('now', '-30 days')")
+rev_30d = safe_scalar("SELECT ROUND(SUM(order_total), 0) FROM orders WHERE order_status = 'delivered' AND ordered_at >= DATE('now', '-30 days')")
+aov = safe_scalar("SELECT ROUND(AVG(order_total), 0) FROM orders WHERE order_status = 'delivered' AND ordered_at >= DATE('now', '-30 days')")
+low_stock = safe_scalar("SELECT COUNT(*) FROM inventory_status WHERE stock_status IN ('STOCKOUT', 'LOW')")
+fcst_7d = safe_scalar("SELECT ROUND(SUM(forecasted_units), 0) FROM forecast_results WHERE forecast_date BETWEEN DATE('now') AND DATE('now', '+7 days')")
+stockouts = safe_scalar("SELECT COUNT(*) FROM inventory_status WHERE stock_status = 'STOCKOUT'")
+products = safe_scalar("SELECT COUNT(*) FROM products")
+margin_pct = safe_scalar("SELECT ROUND(SUM(oi.line_total - p.unit_cost * oi.quantity) / SUM(oi.line_total) * 100, 1) FROM order_items oi JOIN products p ON oi.product_id = p.product_id JOIN orders o ON oi.order_id = o.order_id WHERE o.order_status = 'delivered'")
+fcst_30d = safe_scalar("SELECT ROUND(SUM(forecasted_units), 0) FROM forecast_results WHERE forecast_date BETWEEN DATE('now') AND DATE('now', '+30 days')")
 
 # Row 1
 kpi1, kpi2, kpi3, kpi4, kpi5 = st.columns(5)

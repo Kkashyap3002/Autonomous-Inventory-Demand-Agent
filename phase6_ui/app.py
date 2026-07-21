@@ -15,14 +15,9 @@ import sqlite3
 BASE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BASE))
 
-# Auto-bootstrap data on Streamlit Cloud (runs once, idempotent)
-from phase6_ui.bootstrap import ensure_data
-ensure_data()
-
 from phase6_ui.style import COLORS, inject_css
+from phase6_ui.components.db import safe_scalar, db_ready, DB
 from phase5_agent.graph import run_agent
-
-DB = BASE / "phase2_sql" / "aida.db"
 
 # ── Page Setup ──────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -39,32 +34,14 @@ with st.sidebar:
     st.caption("Autonomous Inventory & Demand Agent")
 
     st.markdown("---")
-    conn = sqlite3.connect(str(DB))
 
-    # Quick KPIs
-    cur = conn.execute("""
-        SELECT COUNT(*) FROM orders
-        WHERE order_status = 'delivered' AND ordered_at >= DATE('now', '-30 days')
-    """)
-    orders_30d = cur.fetchone()[0]
-
-    cur = conn.execute("""
-        SELECT ROUND(SUM(order_total), 0) FROM orders
-        WHERE order_status = 'delivered' AND ordered_at >= DATE('now', '-30 days')
-    """)
-    rev_30d = cur.fetchone()[0] or 0
-
-    cur = conn.execute("""
-        SELECT COUNT(*) FROM inventory_status WHERE stock_status IN ('STOCKOUT', 'LOW')
-    """)
-    low = cur.fetchone()[0]
-
-    cur = conn.execute("""
-        SELECT ROUND(SUM(forecasted_units), 0) FROM forecast_results
-        WHERE forecast_date BETWEEN DATE('now') AND DATE('now', '+7 days')
-    """)
-    fcst = cur.fetchone()[0] or 0
-    conn.close()
+    if db_ready():
+        orders_30d = safe_scalar("SELECT COUNT(*) FROM orders WHERE order_status = 'delivered' AND ordered_at >= DATE('now', '-30 days')")
+        rev_30d = safe_scalar("SELECT ROUND(SUM(order_total), 0) FROM orders WHERE order_status = 'delivered' AND ordered_at >= DATE('now', '-30 days')")
+        low = safe_scalar("SELECT COUNT(*) FROM inventory_status WHERE stock_status IN ('STOCKOUT', 'LOW')")
+        fcst = safe_scalar("SELECT ROUND(SUM(forecasted_units), 0) FROM forecast_results WHERE forecast_date BETWEEN DATE('now') AND DATE('now', '+7 days')")
+    else:
+        orders_30d, rev_30d, low, fcst = 0, 0, 0, 0
 
     st.metric("Orders (30d)", f"{orders_30d:,}")
     st.metric("Revenue (30d)", f"₹{rev_30d:,}")
@@ -72,6 +49,26 @@ with st.sidebar:
     st.metric("7-Day Forecast", f"{fcst:,} units")
 
     st.markdown("---")
+
+    # Data status
+    if not db_ready():
+        st.warning("⚠️ Database not ready")
+        if st.button("🚀 Generate Data", use_container_width=True):
+            with st.spinner("Generating data (this takes 2-3 minutes)..."):
+                import subprocess
+                steps = [
+                    ["python", "phase1_schema/generate_data.py", "--csv"],
+                    ["python", "phase2_sql/load_to_sqlite.py"],
+                    ["python", "phase3_rag/generate_docs.py"],
+                    ["python", "phase3_rag/embed_docs.py"],
+                    ["python", "phase4_forecasting/train_forecast.py", "--model", "ets", "--horizon", "30"],
+                ]
+                for step in steps:
+                    subprocess.run(step, capture_output=True, timeout=600)
+            st.rerun()
+    else:
+        st.success("✅ Data ready")
+
     st.caption("Navigate to other pages via sidebar")
 
 # ── Header ──────────────────────────────────────────────────────────────────
