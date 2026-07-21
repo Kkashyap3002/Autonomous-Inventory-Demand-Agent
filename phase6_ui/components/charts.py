@@ -302,5 +302,8 @@ def _empty_fig(message: str = "No data available") -> go.Figure:
         text=message, x=2, y=2, showarrow=False,
         font={"color": "#5c6078", "size": 14},
     )
-    fig.update_layout(**LAYOUT_DARK, height=200, xaxis={"visible": False}, yaxis={"visible": False})
+    # Merge LAYOUT_DARK with overrides — avoid kwarg conflicts
+    layout = {**LAYOUT_DARK}
+    layout.update({"height": 200, "xaxis": {"visible": False}, "yaxis": {"visible": False}})
+    fig.update_layout(layout)
     return fig
