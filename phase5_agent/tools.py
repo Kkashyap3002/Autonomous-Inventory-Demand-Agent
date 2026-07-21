@@ -183,10 +183,27 @@ def sql_query_tool(user_query: str) -> dict:
                           "or 'daily sales trend'.",
         }
 
+    # Check if database is ready
+    if not DB_PATH.exists():
+        return {
+            "tool": "sql_query",
+            "success": False,
+            "error": "Database not found. Click 'Generate Data' in the sidebar to create it.",
+        }
+
     # Execute the matched SQL
     try:
         conn = sqlite3.connect(str(DB_PATH))
         conn.row_factory = sqlite3.Row
+        # Verify the table exists
+        tbl_check = conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='orders'").fetchone()
+        if not tbl_check:
+            conn.close()
+            return {
+                "tool": "sql_query",
+                "success": False,
+                "error": "Database is empty. Click 'Generate Data' in the sidebar first.",
+            }
         cur = conn.execute(best_template["sql"])
         rows = [dict(r) for r in cur.fetchall()]
         conn.close()

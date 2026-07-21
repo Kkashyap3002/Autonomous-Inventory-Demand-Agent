@@ -53,18 +53,27 @@ with st.sidebar:
     # Data status
     if not db_ready():
         st.warning("⚠️ Database not ready")
-        if st.button("🚀 Generate Data", use_container_width=True):
-            with st.spinner("Generating data (this takes 2-3 minutes)..."):
-                import subprocess
-                steps = [
-                    ["python", "phase1_schema/generate_data.py", "--csv"],
-                    ["python", "phase2_sql/load_to_sqlite.py"],
-                    ["python", "phase3_rag/generate_docs.py"],
-                    ["python", "phase3_rag/embed_docs.py"],
-                    ["python", "phase4_forecasting/train_forecast.py", "--model", "ets", "--horizon", "30"],
-                ]
-                for step in steps:
-                    subprocess.run(step, capture_output=True, timeout=600)
+        if st.button("Generate Data", use_container_width=True):
+            import subprocess, sys
+            steps = [
+                ("Synthetic data", [sys.executable, str(BASE / "phase1_schema/generate_data.py"), "--csv"]),
+                ("SQLite database", [sys.executable, str(BASE / "phase2_sql/load_to_sqlite.py")]),
+                ("Policy docs", [sys.executable, str(BASE / "phase3_rag/generate_docs.py")]),
+                ("Vector store", [sys.executable, str(BASE / "phase3_rag/embed_docs.py")]),
+                ("Forecast models", [sys.executable, str(BASE / "phase4_forecasting/train_forecast.py"), "--model", "ets", "--horizon", "30"]),
+            ]
+            progress = st.progress(0)
+            status = st.empty()
+            for i, (label, cmd) in enumerate(steps):
+                status.text(f"Step {i+1}/5: {label}...")
+                try:
+                    r = subprocess.run(cmd, capture_output=True, text=True, timeout=600, cwd=str(BASE))
+                    if r.returncode != 0:
+                        st.warning(f"{label} may have issues: {r.stderr[-200:]}")
+                except Exception as e:
+                    st.error(f"{label} failed: {e}")
+                progress.progress((i + 1) / len(steps))
+            status.text("Done! Refreshing...")
             st.rerun()
     else:
         st.success("✅ Data ready")
