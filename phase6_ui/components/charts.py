@@ -20,7 +20,6 @@ LAYOUT_DARK = {
     "paper_bgcolor": "rgba(0,0,0,0)",
     "plot_bgcolor": "rgba(0,0,0,0)",
     "font": {"color": "#8b8fa8", "family": "Inter, Segoe UI, sans-serif", "size": 12},
-    "title": {"font": {"color": "#eef0f6", "size": 16, "family": "Inter, Segoe UI, sans-serif"}},
     "xaxis": {
         "gridcolor": "rgba(46,49,64,0.4)",
         "zerolinecolor": "#2e3140",
