@@ -122,7 +122,7 @@ else:
                     "supplier_name", "sla_delivery_hours"]
     display_df = df[[c for c in display_cols if c in df.columns]]
 
-    styled = display_df.style.applymap(color_status, subset=["stock_status"]) \
+    styled = display_df.style.map(color_status, subset=["stock_status"]) \
                            .format({"days_of_stock": "{:.1f}", "daily_sales_rate": "{:.1f}",
                                     "margin_pct": "{:.1f}%"})
     st.dataframe(styled, use_container_width=True, height=600, hide_index=True)
